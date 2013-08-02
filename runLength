@@ -1,0 +1,28 @@
+var splitToArray = function (str) {
+  if (str.length === 0) {
+		return [];
+	}
+	var result = new Array();
+	var first = str[0];
+	var begin = 0;
+	for (var i = 0; i < str.length; i++) {
+		if (first !== str[i]) {
+			result.push(str.slice(begin, i));
+			begin = i;
+			first = str[i];
+		}
+	}
+	result.push(str.slice(begin, str.length));
+	return result; 
+}
+
+
+
+var runLength = function (str) {
+	var arr = splitToArray(str);
+	var result = new Array();
+	for (var i = 0; i < arr.length; i++) {
+		result.push(arr[i].length + arr[i][0]);		
+	}
+	return result.join(""); 
+}
