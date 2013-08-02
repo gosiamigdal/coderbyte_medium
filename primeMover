@@ -1,0 +1,16 @@
+var primeMover = function (num) {
+  var primes = [2];
+	for (var i = 3; primes.length < num; i += 2) {
+		var iIsPrime = true; 
+		for (var k = 1; k < primes.length; k++) {
+			if (i % primes[k] === 0) {
+				iIsPrime = false; 
+				break; 
+			}
+		}
+		if (iIsPrime === true) {
+			primes.push(i);
+		}
+	}
+	return primes[primes.length - 1]; 
+}
