@@ -1,0 +1,44 @@
+var insertComma = function (str, index) {
+  return str.substr(0,index) + "," + str.substr(index);
+}
+
+
+
+function insertZeros(size) {
+    var s = "";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+
+
+var formattedDivision = function (num1, num2) {
+	var div = num1 / num2;
+	var order = 10000;
+	div = Math.round(div * order) / order; 
+	var division = div + "";
+	var major = division;
+	var minor = ""; 
+	for (var i = 0; i < division.length; i++) {
+		if (division[i] === ".") {
+			major = division.slice(0, i);
+			minor = division.slice(i + 1, division.length);
+		}
+	}
+	var newMinor = ""; 
+	if (minor.length >= 4) {
+		newMinor = minor.substr(0,4); 
+	} else {
+		var size = 4 - minor.length;
+		newMinor = minor + insertZeros(size);
+	}
+	var length = major.length; 
+	if (length > 3) {
+		for (var i = 3; i < length; i += 3) {
+			//console.log("major: %s", major);
+			major = insertComma(major, length - i);
+		}
+	}
+	return major + "." + newMinor;
+}
+
