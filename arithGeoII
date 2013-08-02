@@ -1,0 +1,43 @@
+var isArith = function (sequence) {
+  if (sequence.length <= 2) {
+		return true;
+	}
+	var difference = sequence[1] - sequence[0];
+	for (var i = 2; i < sequence.length; i++) {
+		var df = sequence[i] - sequence[i - 1];
+		if (df !== difference) {
+			return false;
+		}
+	} 
+	return true;
+}
+
+
+var isGeo = function (sequence) {
+	if (sequence.length <= 2) {
+		return true;
+	}
+	var difference = sequence[1] / sequence[0];
+	for (var i = 2; i < sequence.length; i++) {
+		var df = sequence[i] / sequence[i - 1];
+		if (df !== difference) {
+			return false;
+		}
+	} 
+	return true;
+}
+
+
+
+
+var arithGeoII = function (arr) {
+	var arithm = isArith(arr);
+	var geom = isGeo(arr);
+	if (arithm) {
+		return "Arithmetic";
+	} else if (geom) {
+		return "Geometric";
+	} else {
+		return -1;
+	}
+}
