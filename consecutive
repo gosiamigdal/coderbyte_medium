@@ -1,0 +1,7 @@
+var consecutive = function (arr) {
+  var arr = arr.sort(function (a, b) { return a - b; } );
+	var givenElementsAmount = arr.length;
+	var expectedAmount = arr[arr.length - 1] - arr[0] + 1;
+	var result = expectedAmount - givenElementsAmount;
+	return result; 
+}
